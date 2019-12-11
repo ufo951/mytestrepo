@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "namespaces_caat_bus_name": {
-            "defaultValue": "caat-bus",
+            "defaultValue": "ur-bus",
             "type": "String"
         }
     },
