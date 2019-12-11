@@ -1,0 +1,1464 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "namespaces_caatqa_bus_name": {
+            "defaultValue": "test-bus2",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.ServiceBus/namespaces",
+            "apiVersion": "2018-01-01-preview",
+            "name": "[parameters('namespaces_caatqa_bus_name')]",
+            "location": "West US 2",
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic"
+            },
+            "properties": {
+                "zoneRedundant": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-emailwelcome')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-heartbeat')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-jsonuploaded')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfform')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+
+
+
+
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/jsonuploaded')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "defaultMessageTimeToLive": "P14D",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "enableBatchedOperations": true,
+                "status": "Active",
+                "supportOrdering": true,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-jsonuploaded/logicappsnotify')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-jsonuploaded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-emailwelcome/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 3,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 3,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/process')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-emailwelcome/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 3,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/store')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-heartbeat/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-heartbeat')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfform/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfform')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": true,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 10,
+                "status": "Active",
+                "enableBatchedOperations": false,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-apikeyadded/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-apikeyadded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-calculation/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-calculation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-emailwelcome/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-emailwelcome/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-emailwelcome')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-exchange/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-exchange')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-gainloss/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-gainloss')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-heartbeat/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-heartbeat', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-heartbeat')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-jsonuploaded/logicappsnotify/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-jsonuploaded', 'logicappsnotify')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-jsonuploaded')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-normaliser/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-normaliser')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfform/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfform', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfform')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-pdfrequest/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-pdfrequest')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-reconciliation/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-reconciliation')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/process/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv', 'process')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/store/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv', 'store')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+            "apiVersion": "2017-04-01",
+            "name": "[concat(parameters('namespaces_caatqa_bus_name'), '/caatqa-upload-csv/web/$Default')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv', 'web')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespaces_caatqa_bus_name'), 'caatqa-upload-csv')]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespaces_caatqa_bus_name'))]"
+            ],
+            "properties": {
+                "action": {},
+                "filterType": "SqlFilter",
+                "sqlFilter": {
+                    "sqlExpression": "1=1",
+                    "compatibilityLevel": 20
+                }
+            }
+        }
+    ]
+}
